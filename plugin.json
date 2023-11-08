@@ -1,0 +1,100 @@
+{
+  "$schema": "https://raw.githubusercontent.com/grafana/grafana/master/docs/sources/developers/plugins/plugin.schema.json",
+  "alerting": true,
+  "annotations": true,
+  "backend": true,
+  "build": {
+    "backend": [
+      {
+        "arch": "amd64",
+        "commands": [
+          "./scripts/ci/linux-amd64-build.sh"
+        ],
+        "image": "grafana/grafana-plugin-ci-e2e:latest",
+        "os": "linux",
+        "prePackage": [
+          "./scripts/ci/linux-amd64-pre-package.sh"
+        ]
+      },
+      {
+        "arch": "amd64",
+        "commands": [
+          "./scripts/ci/windows-build.sh"
+        ],
+        "image": "grafana/grafana-plugin-ci-e2e:latest",
+        "os": "windows",
+        "platformOS": "linux",
+        "prePackage": [
+          "./scripts/ci/windows-pre-package.sh"
+        ]
+      }
+    ]
+  },
+  "category": "enterprise",
+  "dependencies": {
+    "grafanaDependency": "\u003e=9.5.13",
+    "grafanaVersion": "9.x.x",
+    "plugins": []
+  },
+  "executable": "oracle-plugin",
+  "id": "grafana-oracle-datasource",
+  "info": {
+    "author": {
+      "name": "Grafana Labs",
+      "url": "https://grafana.com"
+    },
+    "build": {
+      "time": 1698860136539,
+      "repo": "https://github.com/grafana/oracle-datasource",
+      "branch": "main",
+      "hash": "2603a3f3715ebf0fd2d2a445bf80d2b035a5e879",
+      "build": 493
+    },
+    "description": "Oracle datasource plugin for Grafana",
+    "keywords": [
+      "datasource",
+      "oracle"
+    ],
+    "links": [
+      {
+        "name": "Docs",
+        "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource"
+      },
+      {
+        "name": "License",
+        "url": "https://grafana.com/legal/enterprise-plugins"
+      }
+    ],
+    "logos": {
+      "large": "img/oracle_logo.svg",
+      "small": "img/oracle_logo.svg"
+    },
+    "screenshots": [
+      {
+        "name": "Setup",
+        "path": "screenshots/oracle-datasource-setup.png"
+      },
+      {
+        "name": "List",
+        "path": "screenshots/oracle-datasource-list.png"
+      },
+      {
+        "name": "Dashboard",
+        "path": "screenshots/oracle-types-dashboard-full.png"
+      },
+      {
+        "name": "Graph",
+        "path": "screenshots/oracle-types-graph-panel-types-1.png"
+      },
+      {
+        "name": "Table",
+        "path": "screenshots/oracle-types-table-panel-types-1.png"
+      }
+    ],
+    "updated": "2023-11-01",
+    "version": "2.7.0"
+  },
+  "metrics": true,
+  "name": "Oracle Database",
+  "type": "datasource"
+}
